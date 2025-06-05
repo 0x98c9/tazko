@@ -1,0 +1,137 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 252 80% 74%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 252 80% 74%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 240 4.9% 83.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-exo;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    background: rgba(30, 30, 40, 0.5);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-hover {
+    @apply transform transition-all hover:scale-105 hover:shadow-lg;
+  }
+
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary-purple after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  /* Priority badges */
+  .priority-low {
+    @apply bg-blue-500/20 border-blue-500 text-blue-300;
+  }
+  
+  .priority-medium {
+    @apply bg-green-500/20 border-green-500 text-green-300;
+  }
+  
+  .priority-high {
+    @apply bg-orange-500/20 border-orange-500 text-orange-300;
+  }
+  
+  .priority-urgent {
+    @apply bg-red-500/20 border-red-500 text-red-300;
+  }
+}
+
+.three-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.drag-handle {
+  cursor: grab;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.checkbox-container input:checked + .checkmark {
+  background-color: theme('colors.primary.purple');
+}
+
+.checkbox-container input:checked + .checkmark:after {
+  display: block;
+}
+
+/* Animations for task highlighting when found in search */
+@keyframes highlight-task {
+  0%, 100% {
+    background-color: rgba(155, 135, 245, 0.1);
+  }
+  50% {
+    background-color: rgba(155, 135, 245, 0.3);
+  }
+}
+
+.highlight-task {
+  animation: highlight-task 1.5s ease;
+  outline: 2px solid rgba(155, 135, 245, 0.7);
+}
