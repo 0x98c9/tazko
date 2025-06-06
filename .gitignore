@@ -1,1 +1,17 @@
 node_modules
+#  add dist
+dist
+#  add coverage
+coverage
+#  add logs
+logs
+#  add environment variables
+.env
+#  add IDE specific files
+.idea
+#  add OS specific files
+.DS_Store
+#  add build artifacts
+build/
+#  ignore bun.lockb
+bun.lockb
